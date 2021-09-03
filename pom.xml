@@ -12,7 +12,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<distributionManagementSnapshotsUrl>https://oss.sonatype.org/content/repositories/snapshots/</distributionManagementSnapshotsUrl>
-		<jdk.version>1.8</jdk.version>
+<!--		<jdk.version>1.8</jdk.version>-->
+		<jdk.version>11</jdk.version>
 		<!-- When updating one spring version, make sure that all of them are updated to their latest compatible versions -->
 		<spring.boot.version>2.5.4</spring.boot.version>
 		<spring.framework.version>5.3.9</spring.framework.version>
@@ -1227,7 +1228,12 @@
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>3.1.1</version>
 					<configuration>
-						<source>${jdk.version}</source>
+						<detectJavaApiLink>false</detectJavaApiLink>
+						<source>8</source>
+						<additionalOptions>
+							<additionalOption>-Xdoclint:none</additionalOption>
+						</additionalOptions>
+						<!--						<source>${jdk.version}</source>-->
 					</configuration>
 				</plugin>
 				<plugin>
@@ -2019,4 +2025,11 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>my-repo1</id>
+			<name>your custom repo</name>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/public/</url>
+		</repository>
+	</repositories>
 </project>
